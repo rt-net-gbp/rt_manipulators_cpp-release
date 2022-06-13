@@ -1,0 +1,25 @@
+## rt_manipulators_cpp (foxy) - 1.0.0-1
+
+The packages in the `rt_manipulators_cpp` repository were released into the `foxy` distro by running `/usr/bin/bloom-release --rosdistro foxy --track foxy rt_manipulators_cpp --edit` on `Mon, 13 Jun 2022 06:14:34 -0000`
+
+These packages were released:
+- `rt_manipulators_cpp`
+- `rt_manipulators_examples`
+
+Version of package(s) in repository `rt_manipulators_cpp`:
+
+- upstream repository: https://github.com/rt-net/rt_manipulators_cpp.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `null`
+- new version: `1.0.0-1`
+
+Versions of tools used:
+
+- bloom version: `0.11.1`
+- catkin_pkg version: `0.5.2`
+- rosdep version: `0.21.0`
+- rosdistro version: `0.8.3`
+- vcstools version: `0.1.42`
+
+
