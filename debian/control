@@ -1,0 +1,12 @@
+Source: ros-galactic-rt-manipulators-examples
+Section: misc
+Priority: optional
+Maintainer: RT Corporation <support@rt-net.jp>
+Build-Depends: debhelper (>= 9.0.0), ros-galactic-ament-cmake, ros-galactic-ament-lint-auto <!nocheck>, ros-galactic-ament-lint-common <!nocheck>, ros-galactic-rclcpp, ros-galactic-rt-manipulators-cpp, ros-galactic-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-galactic-rt-manipulators-examples
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-galactic-rclcpp, ros-galactic-rt-manipulators-cpp, ros-galactic-ros-workspace
+Description: Examples for RT Manipulators C++ Library
