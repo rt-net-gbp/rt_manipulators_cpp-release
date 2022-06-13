@@ -1,57 +1,115 @@
-# RTマニピュレータC++ライブラリとサンプル集（rt_manipulators_cpp）
+# RTマニピュレータC++ライブラリ
 
-[![industrial_ci](https://github.com/rt-net/rt_manipulators_cpp/actions/workflows/industrial_ci.yaml/badge.svg?branch=ros2)](https://github.com/rt-net/rt_manipulators_cpp/actions/workflows/industrial_ci.yaml)
+## ライブラリのインストール
 
-本リポジトリは、株式会社アールティが販売している
-[アームロボット**CRANE-X7(クラインエックスセブン)**](https://rt-net.jp/products/crane-x7/)
-と
-[上半身人型ロボット**Sciurus17(シューラスセブンティーン)**](https://rt-net.jp/products/sciurus17/)
-を動かすための、C++ライブラリおよびサンプルプログラムを提供します。
-
-[<img src=https://rt-net.github.io/images/crane-x7/CRANE-X7-500x500.png width=400px />](https://rt-net.jp/products/crane-x7/)
-[<img src=https://rt-net.github.io/images/sciurus17/Sciurus17-500x500.png width=400px />](https://rt-net.jp/products/sciurus17)
-
-## 動作環境
-
-- ROS Foxy
-- ROS Galactic
-- ROS Humble
-- ROS Rolling
-
-## インストール方法
-
-### RTマニピュレータC++ライブラリのビルド&インストール
+[build_install_library.bash](./build_install_library.bash)
+を実行すると、ライブラリをビルド＆インストールできます。
 
 ```sh
-$ cd ~/ros2_ws/src  # workspaceを~/ros2_wsに作成している場合
-$ git clone -b ros2 https://github.com/rt-net/rt_manipulators_cpp
-$ rosdep install -r -y --from-paths . --ignore-src
-$ cd ..
-$ colcon build --symlink-install
+$ ./build_install_library.bash
+ライブラリをビルドします
+-- The C compiler identification is GNU 7.5.0
+-- The CXX compiler identification is GNU 7.5.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+...
+[100%] Built target rt_manipulators_cpp
+ライブラリをビルドしました
+ライブラリをインストールします
+[100%] Built target rt_manipulators_cpp
+Install the project...
+-- Install configuration: ""
+-- Installing: /usr/local/lib/librt_manipulators_cpp.so.1.0.0
+-- Installing: /usr/local/lib/librt_manipulators_cpp.so.1
+-- Installing: /usr/local/lib/librt_manipulators_cpp.so
+-- Up-to-date: /usr/local/include/rt_manipulators_cpp
+-- Installing: /usr/local/include/rt_manipulators_cpp/hardware.hpp
+-- Installing: /usr/local/include/rt_manipulators_cpp/joint.hpp
+ライブラリをインストールしました
 ```
 
-## 免責事項
+ビルドに成功すると、CMakeのデフォルトインストールディレクトリ(例：`/usr/local/lib`、`/usr/local/include`)に共有ライブラリ(`librt_manipulators_cpp.so`)とヘッダーファイル(`rt_manipulators_cpp/*.hpp`)がインストールされます。
 
-当該製品および当ソフトウェアの使用中に生じたいかなる損害も株式会社アールティでは一切の責任を負いかねます。
-ユーザー自身で作成されたプログラムに適切な制限動作が備わっていない場合、本体の損傷や、本体が周囲や作業者に接触、あるいは衝突し、思わぬ重大事故が発生する危険があります。
-ユーザーの責任において十分に安全に注意した上でご使用下さい。
+共有ライブラリは次のように使用できます。
 
-## ライセンス
+```sh
+$ g++ test.cpp -lrt_manipulators_cpp
+```
 
-(C) 2021 RT Corporation \<support@rt-net.jp\>
+## ライブラリのアンインストール
 
-各ファイルはライセンスがファイル中に明記されている場合、そのライセンスに従います。
-特に明記されていない場合は、Apache License, Version 2.0に基づき公開されています。  
-ライセンスの全文は[LICENSE](./LICENSE)
-または[https://www.apache.org/licenses/LICENSE-2.0](https://www.apache.org/licenses/LICENSE-2.0)
-から確認できます。
+[uninstall_library.bash](./uninstall_library.bash)
+を実行すると、ライブラリをアンインストールできます。
 
-## 開発について
+```sh
+$ ./uninstall_library.bash
+ライブラリをアンインストールするため、次のファイルを削除します
+/usr/local/lib/librt_manipulators_cpp.so.1.0.0
+/usr/local/lib/librt_manipulators_cpp.so.1
+/usr/local/lib/librt_manipulators_cpp.so
+/usr/local/include/rt_manipulators_cpp/hardware.hpp
+/usr/local/include/rt_manipulators_cpp/joint.hpp
+アンインストールしました
+```
 
-- 本ソフトウェアはオープンソースですが、開発はオープンではありません。  
-- 本ソフトウェアは基本的にオープンソースソフトウェアとして「AS IS」（現状有姿のまま）で提供しています。
-- 本ソフトウェアに関する無償サポートはありません。  
-- バグの修正や誤字脱字の修正に関するリクエストは常に受け付けていますが、
-それ以外の機能追加等のリクエストについては社内のガイドラインを優先します。
-詳しくは[コントリビューションガイドライン](./CONTRIBUTING.md)に従ってください。
+## ライブラリの使い方
 
+ライブラリの使い方は[サンプル集のREADME.md](../samples/README.md)を参照してください。
+
+## ライブラリのファイル構成
+
+ライブラリは、ロボットのハードウェアを動かすために必要なファイルと、
+運動学を計算するために必要なファイルで構成されています。
+
+### ハードウェア関連
+
+- `hardware.hpp/cpp` : `Hardware`クラスを実装しています
+- `hardware_communicator.hpp/cpp` : `Hardware`クラスのうち、Dynamixelとの通信機能を実装しています
+- `hardware_joints.hpp/cpp` : `Hardware`クラスのうち、ジョイント情報を扱う機能を実装しています
+- `joints.hpp/cpp` : ジョイント情報を定義しています
+- `config_file_parser.hpp/cpp` : コンフィグファイルの読み取りを担います
+- `dynamixel_*` : 各Dynamixelと通信するためのデータ変換を担います
+
+### 運動学関連
+
+- `kinematics.hpp/cpp` : 順運動学、逆運動学を解く関数を実装しています
+- `kinematics_utils.hpp/cpp` : 運動学計算を補助する関数を実装しています
+- `link.hpp` : リンク情報を定義しています
+
+## ライブラリのテスト
+
+### GoogleTestのインストール
+
+```sh
+$ mkdir ~/gtest
+$ cd ~/gtest
+$ curl -OL https://github.com/google/googletest/archive/release-1.11.0.tar.gz
+$ tar -xvf release-1.11.0.tar.gz
+$ mkdir googletest-release-1.11.0/build
+$ cd googletest-release-1.11.0/build
+$ cmake ..
+$ sudo make install
+```
+
+### テストの実行
+
+```sh
+$ ./run_test_library.bash
+ライブラリをテストします
+-- The C compiler identification is GNU 7.5.0
+-- The CXX compiler identification is GNU 7.5.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+...
+    Start 1: JointTest.initialize_id
+1/1 Test #1: JointTest.initialize_id ..........   Passed    0.00 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   0.00 sec
+ライブラリをテストしました
+```
