@@ -1,0 +1,12 @@
+Source: ros-galactic-rt-manipulators-cpp
+Section: misc
+Priority: optional
+Maintainer: RT Corporation <support@rt-net.jp>
+Build-Depends: debhelper (>= 9.0.0), libeigen3-dev, libyaml-cpp-dev, ros-galactic-ament-cmake, ros-galactic-ament-lint-auto <!nocheck>, ros-galactic-ament-lint-common <!nocheck>, ros-galactic-dynamixel-sdk, ros-galactic-eigen3-cmake-module, ros-galactic-yaml-cpp-vendor, ros-galactic-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-galactic-rt-manipulators-cpp
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libeigen3-dev, libyaml-cpp-dev, ros-galactic-dynamixel-sdk, ros-galactic-eigen3-cmake-module, ros-galactic-yaml-cpp-vendor, ros-galactic-ros-workspace
+Description: RT Manipulators C++ Library
