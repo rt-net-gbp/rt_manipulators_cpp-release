@@ -1,0 +1,7 @@
+ros-humble-rt-manipulators-cpp (1.0.0-1bullseye) bullseye; urgency=high
+
+  * ROS 2に対応 (#28 <https://github.com/rt-net/rt_manipulators_cpp/issues/28>)
+
+ -- RT Corporation <support@rt-net.jp>  Sun, 12 Jun 2022 15:00:00 -0000
+
+
