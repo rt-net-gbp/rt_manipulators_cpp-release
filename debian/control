@@ -1,0 +1,12 @@
+Source: ros-foxy-rt-manipulators-cpp
+Section: misc
+Priority: optional
+Maintainer: RT Corporation <support@rt-net.jp>
+Build-Depends: debhelper (>= 9.0.0), libeigen3-dev, libyaml-cpp-dev, ros-foxy-ament-cmake, ros-foxy-ament-lint-auto <!nocheck>, ros-foxy-ament-lint-common <!nocheck>, ros-foxy-dynamixel-sdk, ros-foxy-eigen3-cmake-module, ros-foxy-yaml-cpp-vendor, ros-foxy-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-foxy-rt-manipulators-cpp
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libeigen3-dev, libyaml-cpp-dev, ros-foxy-dynamixel-sdk, ros-foxy-eigen3-cmake-module, ros-foxy-yaml-cpp-vendor, ros-foxy-ros-workspace
+Description: RT Manipulators C++ Library
