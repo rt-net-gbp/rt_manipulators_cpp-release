@@ -1,0 +1,12 @@
+Source: ros-humble-rt-manipulators-examples
+Section: misc
+Priority: optional
+Maintainer: RT Corporation <support@rt-net.jp>
+Build-Depends: debhelper (>= 9.0.0), ros-humble-ament-cmake, ros-humble-ament-lint-auto <!nocheck>, ros-humble-ament-lint-common <!nocheck>, ros-humble-rclcpp, ros-humble-rt-manipulators-cpp, ros-humble-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-humble-rt-manipulators-examples
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-humble-rclcpp, ros-humble-rt-manipulators-cpp, ros-humble-ros-workspace
+Description: Examples for RT Manipulators C++ Library
